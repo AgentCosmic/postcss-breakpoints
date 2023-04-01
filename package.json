@@ -1,0 +1,19 @@
+{
+	"name": "@daltontan/postcss-breakpoints",
+	"version": "1.0.0",
+	"description": "Generate classes that activate at defined widths",
+	"repository": "https://github.com/AgentCosmic/postcss-breakpoints/",
+	"main": "index.js",
+	"author": "Dalton Tan",
+	"license": "ISC",
+	"scripts": {
+		"test": "postcss ./test.css"
+	},
+	"devDependencies": {
+		"postcss": "^8.0.0",
+		"postcss-cli": "^10.0.0"
+	},
+	"peerDependencies": {
+		"postcss": "^8.0.0"
+	}
+}

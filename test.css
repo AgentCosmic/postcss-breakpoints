@@ -1,0 +1,12 @@
+@generate-breakpoints (desktop: 1280px; tablet: 1024px) {
+	h1, .h1 {
+		font-size: 16px;
+	}
+
+	.test, .foobar, #id {
+		font: bold;
+		& .nest {
+			border: none;
+		}
+	}
+}
