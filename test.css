@@ -1,4 +1,4 @@
-@generate-breakpoints (desktop: 1280px; tablet: 1024px) {
+@generate-breakpoints (tablet: 1024px; desktop: 1280px) {
 	h1, .h1 {
 		font-size: 16px;
 	}

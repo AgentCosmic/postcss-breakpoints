@@ -22,23 +22,26 @@ module.exports.postcss = true;
 function breakpointPlugin(opts, atRule) {
 	// start generating code
 	const params = parseParams(atRule.params);
+	let first;
 	for (const [prefix, size] of params) {
-		atRule
-			.cloneBefore({
-				name: 'media',
-				params: `(min-width: ${size})`,
-			})
-			.walkRules((rule) => {
-				const selectors = rule.selectors
-					.filter((s) => s[0] === '.')
-					.map((s) => {
-						return `.${prefix}-${s.substr(1)}`;
-					});
-				rule.replaceWith(rule.clone({ selectors }));
-			});
+		const mq = atRule.cloneBefore({
+			name: 'media',
+			params: `(min-width: ${size})`,
+		});
+		mq.walkRules((rule) => {
+			const selectors = rule.selectors
+				.filter((s) => s[0] === '.')
+				.map((s) => {
+					return `.${prefix}-${s.substr(1)}`;
+				});
+			rule.replaceWith(rule.clone({ selectors }));
+		});
+		if (!first) {
+			first = mq;
+		}
 	}
 	// extract the original declarations
-	atRule.after(atRule.nodes);
+	first.before(atRule.nodes);
 
 	// cleanup
 	atRule.remove();
