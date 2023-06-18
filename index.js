@@ -9,7 +9,7 @@ module.exports = (opts = {}) => {
 	}
 	return {
 		postcssPlugin: 'postcss-breakpoints',
-		AtRule: {
+		AtRuleExit: {
 			'generate-breakpoints': (atRule, api) => {
 				breakpointPlugin(opts, atRule, api);
 			},
